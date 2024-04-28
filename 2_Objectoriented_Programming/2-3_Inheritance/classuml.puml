@@ -1,4 +1,4 @@
-@startuml
+@startuml One
 !theme mars
 class GameCharacter{
   name : str
