@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from tkinter import *
+import tkinter as tk
 @dataclass
 
 class MyTwoDObjects:
-    cv: Canvas
+    cv: tk.Canvas
     x : float = 0
     y:  float = 0
     index : int = field(default = 0, init = False)  # Dieses Attribut hat Stdndartwert 0 
@@ -26,8 +26,8 @@ class MyCircle(MyTwoDObjects):
                                          self.y+self.radius)
         
 def setup_canvas(height : int = 600, width : int = 600):
-    root = Tk()
-    cv = Canvas(root, height= height, width = width)
+    root = tk.Tk()
+    cv = tk.Canvas(root, height= height, width = width)
     cv.pack()
     return cv
     
@@ -37,7 +37,7 @@ def my_geo() -> int:
     return MyCircle(cv,  200, 300, radius = 50)
 
 my_geo()
-mainloop()
+tk.mainloop()
 
 
 
