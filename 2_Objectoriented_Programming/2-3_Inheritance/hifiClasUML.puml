@@ -1,0 +1,28 @@
+@startuml One
+!theme mars
+class GameCharacter{
+  name : str
+  species : str
+  hitpoints : int
+  dc_hp()
+}
+  class NonPlayerCharacter{
+    alignement : str
+    dc_hp()
+  }
+
+class PlayerCharacter{
+  strength : int
+  level_up()
+  heal()
+}
+GameCharacter <-- NonPlayerCharacter
+GameCharacter <-- PlayerCharacter
+
+hide GameCharacter circle
+show GameCharacter fields
+show Gamecharacter methods
+hide NonPlayerCharacter circle
+hide PlayerCharacter circle
+
+@enduml

@@ -9,9 +9,9 @@ def bubble_sort(a):
 	Third Sort Algorithm Bubblesosrt
 
 	
-	>>> min_sort([35, 14, 65, 19, 44, 8, 23, 19])
+	>>> bubble_sort([35, 14, 65, 19, 44, 8, 23, 19])
 	[8, 14, 19, 19, 23, 35, 44, 65]
-	>>> min_sort([5, 4, 3, 2, 1])
+	>>> bubble_sort([5, 4, 3, 2, 1])
 	[1, 2, 3, 4, 5]
 	>>> min_sort([])
 	[]
@@ -49,7 +49,7 @@ if __name__=="__main__":
  
 """ 
 in Terminal   
-> python bublesort.py > bub_sort_times.tsv
+> python bubblesort.py > bub_sort_times.tsv
 > cat bub_sort_times.tsv 
 > gnuplot -e 'plot "bub_sort_times.tsv" with lines ; pause -1;'
 > gnuplot -e 'set terminal pdf; plot "bub_sort_times.tsv" with lines ; pause -1;'
