@@ -1,0 +1,47 @@
+@startuml One
+!theme mars
+class Elektrogeraete{
+  marke : str
+  baujahr : int
+  preis : int
+  power_on()
+}
+class Hifigeraete{
+    power : str
+    connect()
+    
+}
+
+class Stereoverstaerker{
+  power : int
+  volume_up()
+}
+
+class Kuehlschraenke{
+  energylabel : str
+  power_on()
+}
+
+class CDPlayer{
+  color : str
+  open_slot()
+}
+
+Elektrogeraete <-- Hifigeraete
+Hifigeraete <-- CDPlayer 
+Hifigeraete <-- Stereoverstaerker
+Elektrogeraete <-- Kuehlschraenke
+
+
+hide Elektrogeraete circle
+show Elektrogeraete methods
+show Hifigeraete methods
+show stackereoverstaerker methods
+show Kuehlschraenke methods
+show CDPlayer methods
+hide Hifigeraete circle
+hide Stereoverstaerker circle
+hide CDPlayer circle
+hide Kuehlschraenke circle
+
+@enduml
