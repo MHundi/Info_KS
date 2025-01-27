@@ -1,26 +1,19 @@
-/*markdown
+-- SQLBook: Markup
 ## Aufgabenblatt 1
-*/
 
-/*markdown
 #### Aufgabe 1
 Verbinden Sie sich mit dem Datenbank Server. Die Credentials dafür sind:
 - host: 10.31.249.69
 - Port: 5432
 - database mondial
 - driver: postgres
-*/
-
-/*markdown
+-- SQLBook: Markup
 ##### Aufgabe 2
 Wie viele Zeilen hat die Relation `country`
-*/
-
+-- SQLBook: Code
 select * from country
-
-/*markdown
+-- SQLBook: Markup
 #### Aufgabe 3
 Geben Sie die Zahl der Länder an, die in der Realtion `country` eingetragen sind.
-*/
-
+-- SQLBook: Code
 select count(distinct(name)) from country
