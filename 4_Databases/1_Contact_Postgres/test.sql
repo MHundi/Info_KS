@@ -85,7 +85,7 @@
 
 10. **Übung 7: Textsuche**
 
-    - **Aufgabe:** Schreibe eine SQL-Abfrage, die alle Länder abruft, deren Name mit dem Buchstaben 'A' beginnt.
+    -  
     
       ```sql
       SELECT * FROM country WHERE name LIKE 'A%';
