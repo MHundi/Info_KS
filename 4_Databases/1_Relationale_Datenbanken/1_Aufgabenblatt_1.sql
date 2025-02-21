@@ -16,12 +16,14 @@ Verbinden Sie sich mit dem Datenbank Server. Die Credentials dafür sind:
 
 /*markdown
 
+/*markdown
 ##### Aufgabe 2: Zeilen in der `country`
 Wie viele Zeilen hat die Relation `country`?
 
 
-
 */
+
+SELECT * From country;
 
 /*markdown
 
