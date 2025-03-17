@@ -19,7 +19,7 @@ Verbinden Sie sich mit dem Datenbank Server. Die Credentials dafür sind:
 Wie viele Zeilen hat die Relation `country`?
 */
 
-SELECT * From country;
+
 
 /*markdown
 #### Aufgabe 3: Länder in `country`

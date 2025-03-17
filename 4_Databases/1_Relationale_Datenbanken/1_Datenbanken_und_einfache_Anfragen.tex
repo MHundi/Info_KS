@@ -42,6 +42,13 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
+\ifLuaTeX
+  \usepackage{luacolor}
+  \usepackage[soul]{lua-ul}
+\else
+  \usepackage{soul}
+  
+\fi
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 % Make \paragraph and \subparagraph free-standing
@@ -137,6 +144,8 @@
 \makeatother
 
 \usepackage[document]{ragged2e}
+\usepackage{caption}
+\captionsetup{labelformat=empty}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
@@ -224,18 +233,21 @@ Datenbanken}\label{relationale-datenbanken}
   Unterstreichen gekennzeichnet.
 \end{itemize}
 
-\[ \text{Student} \]
-
 \begin{longtable}[]{@{}lllll@{}}
+\caption{Student}\tabularnewline
 \toprule\noalign{}
-Student-ID & Name & Vorname & Klassen & Adresse \\
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-212 & Frei & Emil & KS 2 & Hansastraße 20 \\
-134 & Tittel & Dominik & KS 2 & Yorkstraße 23a \\
-423 & Klum & Leni & KS 2 & Turnaustraße 43 \\
+212 & Frei & Emil & KS2 & Hansastraße 20 \\
+134 & Tittel & Dominik & KS2 & Yorkstraße 23a \\
+423 & Klum & Leni & KS2 & Turnaustraße \\
 \end{longtable}
 
 \subsubsection{2. Struktur und Inhalt einer
@@ -248,24 +260,27 @@ werden. Das wird bewerkstelligt mit dem Relationsschema.
 \item
   Struktur der Relation Student:
 
-  Student(ID, Name, Vorname, Klasse, Adresse)
+  Student(Student-ID, Name, Vorname, Klasse, Adresse)
 \item
   Der Inhalt/Zustand der Relation mit Schema Student ist die
   Relationsinstanz:
 \end{itemize}
 
-\[ \text{Student} \]
-
 \begin{longtable}[]{@{}lllll@{}}
+\caption{Student}\tabularnewline
 \toprule\noalign{}
-Student-ID & Name & Vorname & Klasse & Adresse \\
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-212 & Frei & Emil & KS 2 & Hansastraße 20 \\
-134 & Tittel & Dominik & KS 2 & Yorkstraße 23a \\
-423 & Klum & Leni & KS 2 & Turnaustraße 43 \\
+212 & Frei & Emil & KS2 & Hansastraße 20 \\
+134 & Tittel & Dominik & KS2 & Yorkstraße 23a \\
+423 & Klum & Leni & KS2 & Turnaustraße \\
 \end{longtable}
 
 \begin{itemize}
@@ -278,52 +293,68 @@ Student-ID & Name & Vorname & Klasse & Adresse \\
 \subsubsection{3. Beispiel einer
 Miniwelt}\label{beispiel-einer-miniwelt}
 
-Student(Student-ID, Name, Vorname, Klasse, Adresse)
+\begin{itemize}
+\item
+  Struktur:
 
-Lehrer(Teacher-ID, Vorname, Nachname, Titel)
+  Student(Student-ID, Name, Vorname, Klasse, Adresse)
 
-Fach(Kurzzeichen, Art, Stundenzahl)
+  Lehrer(Teacher-ID, Vorname, Nachname, Titel)
 
-\[ \text{Student} \]
+  Fach(Kurzzeichen, Art, Stundenzahl)
+\item
+  Relationeneinstanzen:
+\end{itemize}
 
 \begin{longtable}[]{@{}lllll@{}}
+\caption{Student}\tabularnewline
 \toprule\noalign{}
-Student-ID & Name & Vorname & Klassen & Adresse \\
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\ul{Student-ID} & Name & Vorname & Klassen & Adresse \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-212 & Frei & Emil & KS 2 & Hansastraße 20 \\
-134 & Tittel & Dominik & KS 2 & Yorkstraße 23a \\
-423 & Klum & Leni & KS 2 & Turnaustraße 43 \\
+212 & Frei & Emil & KS2 & Hansastraße 20 \\
+134 & Tittel & Dominik & KS2 & Yorkstraße 23a \\
+423 & Klum & Leni & KS2 & Turnaustraße \\
 \end{longtable}
 
-\[ \text{Lehrer} \]
-
 \begin{longtable}[]{@{}llll@{}}
+\caption{Lehrer}\tabularnewline
 \toprule\noalign{}
-Lehrer-ID & Vorname & Nachname & Titel \\
+\ul{Lehrer-ID} & Vorname & Nachname & Tittel \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\ul{Lehrer-ID} & Vorname & Nachname & Tittel \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 001 & Gerhard & Gauß & Dr \\
-002 & Felix & Otto & StD \\
+002 & Felix & Ott & StR \\
 003 & Milena & Tabert & Frau \\
 \end{longtable}
 
-\[ \text{Fach} \]
-
 \begin{longtable}[]{@{}lll@{}}
+\caption{Fach}\tabularnewline
 \toprule\noalign{}
-Kurzzeichen & Art & Stundenzahl \\
+\ul{Kurzzeichen} & Art & Stundenzahl \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\ul{Kurzzeichen} & Art & Stundenzahl \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 M & Hauptfach & 5 \\
-Inf & Nebenfach & 2 \\
-Bio & Nebenfach & 2 \\
+Bio & Nebenfach & 3 \\
+Informatik & Nebenfach & 2 \\
 \end{longtable}
 
 \subsubsection{4. Datenbankschema und
@@ -373,18 +404,68 @@ Schlüssel der Relation Participation sind die Primärschlüssel aus den
 Relationen Subject und Student: - Student-ID - Kurzzeichen Dieser
 Schlüssel wird als Fremdschlüssel bezeichent.
 
-\[ \text{Teilnahme} \]
-
-\begin{longtable}[]{@{}lll@{}}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\caption{besucht old}\tabularnewline
 \toprule\noalign{}
-Student-ID & Kurzzeichen & Schuljahr \\
+\begin{minipage}[b]{\linewidth}\raggedright
+\ul{Student-ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ul{Kurzzeichen}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Schuljahr
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\ul{Student-ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ul{Kurzzeichen}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Schuljahr
+\end{minipage} \\
 \midrule\noalign{}
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
 212 & M & 2024/2025 \\
-212 & Inf & 2024/2025 \\
-134 & Bio & 2024/20252 \\
+134 & Bio & 2024/2025 \\
+423 & Inf & 2024/2025 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.6154}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.1731}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2115}}@{}}
+\caption{besucht}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\ul{Student-ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ul{Kurzzeichen}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Schuljahr
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\ul{Student-ID}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\ul{Kurzzeichen}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Schuljahr
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+212 & M & 2024/2025 \\
+134 & Bio & 2024/2025 \\
+423 & Inf & 2024/202 \\
 \end{longtable}
 
 \subsubsection{6. Arbeiten mit einer
@@ -441,7 +522,7 @@ SQL}\label{anfragesprache-fuxfcr-datenbanken-sql}
 \begin{Highlighting}[numbers=left,,]
 \KeywordTok{SELECT}\NormalTok{ Name}
 \KeywordTok{FROM}\NormalTok{  Teacher}
-\KeywordTok{WHERE}\NormalTok{ Titel }\OperatorTok{=}\OtherTok{"Dr"}
+\KeywordTok{WHERE}\NormalTok{ Titel }\OperatorTok{=}\StringTok{\textquotesingle{}Dr\textquotesingle{}}
 \end{Highlighting}
 \end{Shaded}
 
