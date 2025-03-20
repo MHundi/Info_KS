@@ -44,3 +44,7 @@ Aufgabe 10: Flüsse mit Endung „-er“:
 
 Ermitteln Sie alle Flüsse (river.name), deren Name auf „-er“ endet.
 */
+
+/*markdown
+
+*/
